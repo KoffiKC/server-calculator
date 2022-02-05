@@ -6,22 +6,23 @@ const PORT = 5000;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('server/public'));
 
-let calcs = [;]
+let calcs = [];
+let numbers = [];
 
-app.get('/???', function(req, res){
-    console.log('request @ /qoutes was made', req.body);
-    res.send(???);
-})
+// app.get('/numbers', function(req, res){
+//     console.log('request @ /qoutes was made', req.body);
+//     res.send(???);
+// })
 
-app.post('???', function(req, res){
+app.post('/numbers', function(req, res){
     console.log('look Ma, no path!');
     
-    console.log(req.body.?????);
+    console.log(req.body.daNums);
     
     // making the info from the request body grabbablw
-    let ???? = req.body.?????;
+    let nums = req.body.daNums;
 
-    /*???*/.push(????);
+    numbers.push(nums);
 
     res.sendStatus(201);
 });
