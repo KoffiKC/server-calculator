@@ -7,14 +7,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('server/public'));
 
 let calcs = [];
-let numbers = [];
 
-// app.get('/numbers', function(req, res){
-//     console.log('request @ /qoutes was made', req.body);
-//     res.send(???);
-// })
 
-app.post('/numbers', function(req, res){
+app.get('/calcs', function(req, res){
+    console.log('request @ /qoutes was made', req.body);
+    res.send(calcs);
+})
+
+app.post('/calcs', function(req, res){
     console.log('look Ma, no path!');
     
     console.log(req.body.daNums);
@@ -22,7 +22,7 @@ app.post('/numbers', function(req, res){
     // making the info from the request body grabbablw
     let nums = req.body.daNums;
 
-    numbers.push(nums);
+    calcs.push(nums);
 
     res.sendStatus(201);
 });
