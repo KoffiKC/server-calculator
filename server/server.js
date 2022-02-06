@@ -15,18 +15,40 @@ app.get('/calcs', function(req, res){
 })
 
 app.post('/calcs', function(req, res){
-    console.log('look Ma, no path!');
-    
     console.log(req.body.daNums);
     
-    // making the info from the request body grabbablw
     let nums = req.body.daNums;
 
-    calcs.push(nums);
+    calcs.push(evaluate(nums));
 
     res.sendStatus(201);
 });
 
+function evaluate(array) {
+    console.log(array);
+    
+    let x = Number(array.numberX);
+    let y = Number(array.numberY);
+  
+    switch (array.math) {
+        case "+":
+            array.sum = x + y;
+            return array;
+        case "-":
+            array.sum = x - y;
+            return array;
+        case "*":
+            array.sum = x * y;
+            return array;
+        case "/":
+            array.sum = x / y;
+            return array;
+    
+        default:
+            alert('operator not selected')
+            break;
+    }
+}
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT)

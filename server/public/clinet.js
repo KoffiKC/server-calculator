@@ -5,12 +5,9 @@ let operand = '';
 $(readyNow);
 
 function readyNow() {
-    console.log('doooooode');
+    console.log('duuuuuuude');
     $('#eval-button').on('click', sendValues);
-    $('#add-button').on('click', updateOperand);
-    $('#minus-button').on('click', updateOperand);
-    $('#multi-button').on('click', updateOperand);
-    $('#divi-button').on('click', updateOperand);
+    $('.math-button').on('click', updateOperand);
     $('#clear-button').on('click', function(){
         $('#number-one').val("");
         $('#number-two').val("");
@@ -22,6 +19,9 @@ function appendNums(response) {
         for( let res of response){
             $('ul').append(`<li>${res.numberX} ${res.math} ${res.numberY}</li>`);
         }
+
+        $('h3').empty();
+        $('h3').append(response[response.length-1].sum)
 }
 
 function showNumbers() {
@@ -48,6 +48,7 @@ function sendValues() {
                 numberX: $('#number-one').val(),
                 numberY: $('#number-two').val(),
                 math: operand,
+                sum: null,
             }
         }
     }).then(function(response){
